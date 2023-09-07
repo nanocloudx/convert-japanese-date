@@ -20,25 +20,35 @@ export default function convertJapaneseDateToISO8601(dateStr: string) {
   }
   const era = eraMatch[1]
   const year = eraMatch[2] === '元' ? 1 : parseInt(eraMatch[2].replace(/^0+/, ''))
-  const month = parseInt(eraMatch[3].replace(/^0+/, ''))
-  const day = eraMatch[4] ? parseInt(eraMatch[4].replace(/^0+/, '')) : 1
+  let month = eraMatch[3] ? parseInt(eraMatch[3].replace(/^0+/, '')) : 0
+  let day = eraMatch[4] ? parseInt(eraMatch[4].replace(/^0+/, '')) : 1
 
   let eraStartYear = 0
   switch (era) {
     case '明治':
       eraStartYear = 1868
+      month = month !== 0 ? month : 1
+      day = month !== 0 ? day : 1
       break;
     case '大正':
       eraStartYear = 1912
+      month = month !== 0 ? month : 7
+      day = month !== 0 ? day : 30
       break;
     case '昭和':
       eraStartYear = 1926
+      month = month !== 0 ? month : 12
+      day = month !== 0 ? day : 25
       break
     case '平成':
       eraStartYear = 1989
+      month = month !== 0 ? month : 1
+      day = month !== 0 ? day : 8
       break
     case '令和':
       eraStartYear = 2019
+      month = month !== 0 ? month : 5
+      day = month !== 0 ? day : 1
       break
     default:
       throw new Error('Error: convertJapaneseDateToISO8601 Unsupported era.')
