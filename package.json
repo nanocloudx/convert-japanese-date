@@ -1,0 +1,22 @@
+{
+  "name": "convert-japanese-date",
+  "version": "0.1.0",
+  "description": "Convert Japanese date to ISO8601",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": ["japanese", "era", "date", "ISO8601"],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nanocloudx <nanocloudx@gmail.com> (https://wwww.dev/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nanocloudx/convert-japanese-date.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
